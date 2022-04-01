@@ -1,0 +1,7 @@
+.NavList {
+  display: flex;
+  flex-direction: row;
+  /* color: #595959; */
+  justify-content: flex-start;
+  align-items: baseline;
+}

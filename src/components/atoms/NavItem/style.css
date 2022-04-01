@@ -1,0 +1,11 @@
+.NavItem {
+  text-align: center;
+  min-width: 10%;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.NavItem:hover {
+  color: #ffffff;
+  background-color: #9c27b0;
+}

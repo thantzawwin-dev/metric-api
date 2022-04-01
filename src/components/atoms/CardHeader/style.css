@@ -1,0 +1,7 @@
+.CardHeader {
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0.5em;
+  /* border-bottom: 0.5px solid gray;  */
+}
