@@ -9,8 +9,8 @@ import { doughnutChartBackgroundColor } from '../../../assets'
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const chartProps = {
-  height: "285px",
-  width: "285px",
+  height: "150px", //min height
+  width: "150px", //min width
 }
 
 const KongLatency = ({ values }) => { 
