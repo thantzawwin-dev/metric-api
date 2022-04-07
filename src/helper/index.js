@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { doughnutChartBackgroundColor } from '../assets'
+import * as _ from 'lodash'
 
 // just only for only Kong metrics
 

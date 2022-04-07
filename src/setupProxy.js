@@ -6,7 +6,10 @@ module.exports = function(app) {
     '/metrics',
     createProxyMiddleware({
       target: 'http://localhost:8001',
-      changeOrigin: true,
+      // changeOrigin: true,
+      headers: {
+        "Connection": "keep-alive"
+      },
     })
   );
 };

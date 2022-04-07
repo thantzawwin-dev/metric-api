@@ -82,11 +82,11 @@ export const selectMetricsError = (state) => state.metric.error;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.
-export const incrementIfOdd = (amount) => (dispatch, getState) => {
-  const currentValue = selectMetrics(getState());
-  if (currentValue) {
-    dispatch(incrementByAmount(amount));
-  }
-};
+// export const incrementIfOdd = (amount) => (dispatch, getState) => {
+//   const currentValue = selectMetrics(getState());
+//   if (currentValue) {
+//     dispatch(incrementByAmount(amount));
+//   }
+// };
 
 export default metricSlice.reducer;
