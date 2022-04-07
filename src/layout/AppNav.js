@@ -2,19 +2,16 @@ import React from 'react'
 // import routes from '../routes'
 import { NavContainer, NavList, NavItem } from '../components'
 
-const AppNav = () => {
+const AppNav = ({ routes, isTransparent }) => {
   return (
-    <NavContainer>
+    <NavContainer isTransparent={isTransparent}>
       <NavList>
-        <NavItem to={"/dashboard"} >
-          Dashboard
-        </NavItem>
-        {/* <NavItem to={"/dashboard2"} >
-          Route_2
-        </NavItem> */}
+        {
+          routes && routes.map((route, idx) => <NavItem key={idx} to={route.path} >{route.name}</NavItem>)
+        }
       </NavList>
     </NavContainer>
   )
 }
 
-export default React.memo(AppNav)
+export default AppNav

@@ -1,10 +1,11 @@
 import React from 'react'
 import './style.css';
 
-const NavContainer = (props) => {
+const NavContainer = ({ children, className = "", isTransparent = false, ...rest }) => {
+  const cName = "Nav " + (className || "") + (isTransparent ? " Nav_Transparent" : "")
   return (
-    <div className="Nav">
-      {props.children}
+    <div className={cName} {...rest}>
+      {children}
     </div>
   )
 }

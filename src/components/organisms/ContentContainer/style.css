@@ -1,6 +1,11 @@
 
 .Content { 
-  /* height:100vh;  */
+  min-height: 100vh; 
   /* width:100vw;  */
   /* padding-top: 25vh;  */
+  box-sizing: border-box;
+  padding: 1.5em;
+  color: #595959;
+  background-color: #f2edf3;
+  /* min-height: inherit; */
 }

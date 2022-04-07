@@ -4,21 +4,23 @@ import { Card, CardBody, CardHeader } from '../../../components'
 import { CircleSVG } from '../../../assets'
 import cardBackgroundGradients from '../../../assets/constant/cardBackgroundGradients'
 
-const MetricCardSection = ({ name, values, description, metricType }) => {
+const MetricCardSection = ({ title, values, description, metricType }) => {
+  let bgIndex = -1
   return (
-    <div className="section" key={name}>
-      <h4>{name}</h4>
-      <div className="item_container">
+    <div className="section" key={title}>
+      <h4>{title}</h4>
+      <div className="cards_item_container">
         {values.map((item, index) => {
-          const bgIndex = index % 7 > 0 ? index % 7 : index;
+          ++bgIndex
+          bgIndex = bgIndex > 6 ? 0 : bgIndex;
           return (
-            <Card key={index} style={cardBackgroundGradients[bgIndex]}>
+            <Card key={index} style={{ color: '#ffffff', ...cardBackgroundGradients[bgIndex]}}>
               <CardHeader>                  
                 <div className="tooltip">{metricType}
                   <span className="tooltiptext">{description}</span>
                 </div>
                 <div>
-                  <code>{item.metricProperty}</code>
+                  {/* <code>{item.metricProperty}</code> */}
                 </div>
               </CardHeader>
               <CardBody>

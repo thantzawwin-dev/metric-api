@@ -3,4 +3,11 @@
   /* width: 100%; */
   background-color: rgba(255, 255, 255);
   /* color: #595959; */
+  z-index: 999;
+  position: sticky;
+  top: 0;
+}
+
+.Nav_Transparent {
+  opacity: 0.8;
 }
