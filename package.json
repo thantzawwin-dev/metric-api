@@ -1,5 +1,5 @@
 {
-  "name": "api-metrics-dashboard",
+  "name": "kong-metrics",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
