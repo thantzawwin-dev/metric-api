@@ -16,7 +16,7 @@ const Page500 = () => {
   return (
     <div className="error_page">
       <div className="error_page_container">
-        <h1 className="title">Kong <span className="sub_title">API Metrics</span></h1>
+        <h1 className="error_title">Kong <span className="error_sub_title">API Metrics</span></h1>
         <div>
             <h1 className="">{state.error && state.error.name}</h1>
             <h4 className="">We have a problem! {state.error && state.error.message}</h4>

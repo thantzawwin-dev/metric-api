@@ -1,11 +1,13 @@
 .Nav {
   box-sizing: border-box;
   /* width: 100%; */
-  background-color: rgba(255, 255, 255);
-  /* color: #595959; */
+  /* background-color: rgba(255, 255, 255); */
+  background-color: #722ACB;
+  color: #ffffff;
   z-index: 999;
   position: sticky;
   top: 0;
+  padding-left: 1.5%;
 }
 
 .Nav_Transparent {

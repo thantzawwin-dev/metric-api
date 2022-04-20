@@ -4,11 +4,11 @@ import {
 } from './organisms';
 
 import { 
-  NavList, Card, KongHttpStatus
+  NavList, Card, HttpStatus, HttpCurrentConnection
 } from './molecules';
 
 import { 
-  Loading, CustomLink, NavItem, CardBody, CardHeader, ToggleSwitch
+  Loading, CustomLink, NavItem, CardBody, CardHeader, ToggleSwitch, HttpStatusItem, HttpCurrentConnectionItem
 } from './atoms';
 
 export { HeaderContainer }
@@ -19,7 +19,8 @@ export { SectionContainer }
 
 export { NavList }
 export { Card }
-export { KongHttpStatus }
+export { HttpStatus }
+export { HttpCurrentConnection }
 
 export { Loading }
 export { CustomLink }
@@ -27,3 +28,5 @@ export { NavItem }
 export { CardBody }
 export { CardHeader }
 export { ToggleSwitch }
+export { HttpStatusItem }
+export { HttpCurrentConnectionItem }

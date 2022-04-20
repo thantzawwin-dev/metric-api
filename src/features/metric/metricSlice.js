@@ -7,6 +7,7 @@ const initialState = {
   status: 'idle',
   raw: "",
   error: null,
+  updatedDateTime: null,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -63,6 +64,7 @@ export const metricSlice = createSlice({
         state.value = kongMetricsResponseConverter(action.payload);
         state.raw = action.payload;
         state.error = null;
+        state.updatedDateTime = Date.now(); // by second
       });
   },
 });
@@ -79,6 +81,8 @@ export const selectMetricsRaw = (state) => state.metric.raw;
 export const selectMetricsStatus = (state) => state.metric.status;
 
 export const selectMetricsError = (state) => state.metric.error;
+
+export const selectMetricsUpdatedDateTime = (state) => state.metric.updatedDateTime;
 
 // We can also write thunks by hand, which may contain both sync and async logic.
 // Here's an example of conditionally dispatching actions based on current state.

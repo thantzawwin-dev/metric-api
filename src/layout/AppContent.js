@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import * as _ from 'lodash'
 import { getMetricsAsync, selectMetrics, selectMetricsRaw } from '../features/metric/metricSlice'
-import { filterMetricWithService, splitSpecificServiceMetric } from '../helper'
+import { filterMetricWithService, filterMetricWithoutService, splitSpecificServiceMetric } from '../helper'
 
 const AppContent = ({ routes }) => {
   const metrics = useSelector(selectMetrics)
@@ -14,14 +14,13 @@ const AppContent = ({ routes }) => {
     const interval = setInterval(() => {
       console.log('This will run every second!');
       dispatch(getMetricsAsync())
-    }, 5000);
+    }, 10000); //10 seconds
     return () => clearInterval(interval);
   }, [])
 
+  const generalMetrics = filterMetricWithoutService(metrics);
   const serviceMetrics = filterMetricWithService(metrics);
   const sepecificServiceMetrics = splitSpecificServiceMetric(serviceMetrics);
-    
-  // console.log("sepecificServiceMetrics = ", sepecificServiceMetrics)
 
   return (
     <Suspense fallback={<div>Loading</div>}>
@@ -34,7 +33,8 @@ const AppContent = ({ routes }) => {
                 path={route.path}
                 exact={route.exact}
                 name={route.name}
-                element={<route.element metrics={sepecificServiceMetrics[route.name] || metrics} raw={metricsRaw} />}
+                
+                element={<route.element metrics={[...sepecificServiceMetrics[route.name] || [], ...generalMetrics]} raw={metricsRaw} />}
               />
             )
           )

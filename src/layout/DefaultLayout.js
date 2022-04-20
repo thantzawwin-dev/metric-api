@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useLocation } from "react-router-dom"
 import * as _ from 'lodash'
-import { getMetricsAsync, selectMetricsStatus, selectMetricsError } from '../features/metric/metricSlice'
+import { getMetricsAsync, selectMetricsStatus, selectMetricsError, selectMetricsUpdatedDateTime } from '../features/metric/metricSlice'
 import AppNav from './AppNav.js'
 import AppHeader from './AppHeader.js'
 import AppContent from './AppContent.js'
@@ -22,6 +22,7 @@ const handlePageRoute = (payload, set) => {
 
 const DefaultLayout = () => {
   const location = useLocation();
+  const metricsUpdatedDateTime = useSelector(selectMetricsUpdatedDateTime)
   const metricsStatus = useSelector(selectMetricsStatus)
   const metricsError = useSelector(selectMetricsError)
   const [myRoutes, setMyRoutes] = useState([]);
@@ -31,9 +32,9 @@ const DefaultLayout = () => {
   const dispatch = useDispatch()
 
   const listenScrollEvent = () => {
-    if (window.scrollY <= 70) {
+    if (window.scrollY <= 70 && isTransparent) {
       setIsTransparent(false);
-    } else if (window.scrollY >= 70) {
+    } else if (window.scrollY >= 70 && !isTransparent) {
       setIsTransparent(true);
     }
   };
@@ -50,13 +51,18 @@ const DefaultLayout = () => {
         )
       }
     })
+    // window.addEventListener("scroll", listenScrollEvent);
+    // return () => {
+    //   window.removeEventListener("scroll", listenScrollEvent);
+    // }
+  }, [isFirstTime])
 
+  useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
     return () => {
       window.removeEventListener("scroll", listenScrollEvent);
     }
-
-  }, [])
+  }, [isTransparent])
 
   if(metricsError && metricsStatus === "idle") {
     return <Navigate to={"/500"} state={{ from: location, error:{...metricsError} }} replace />
@@ -65,18 +71,17 @@ const DefaultLayout = () => {
   return (
     <div >
       {/* <AppSidebar /> */}
-      <AppHeader /> 
-      <AppNav routes={myRoutes} isTransparent={isTransparent} />
-      <div className="">
-        <ContentContainer >
-          <div className="flex_box">
-          {
-            (metricsStatus === "loading" && isFirstTime) ? <Loading /> : <AppContent routes={myRoutes} />
-          }
-          </div>
-        </ContentContainer>
-        <AppFooter />
-      </div>
+      <AppHeader metricsUpdatedDateTime={metricsUpdatedDateTime} handleReload={()=>{
+        setIsFirstTime(true)
+      }} /> 
+      <AppNav routes={myRoutes} isTransparent={isTransparent} 
+      />
+      <ContentContainer >
+        {
+          (metricsStatus === "loading" && isFirstTime) ? <Loading /> : <AppContent routes={myRoutes} />
+        }
+      </ContentContainer>
+      <AppFooter />
     </div>
   )
 }

@@ -4,8 +4,8 @@ import { FooterContainer } from '../components'
 const AppFooter = () => {
   return (
     <FooterContainer>
-      <div className="ms-auto">
-        <span className="me-1">Powered by </span>
+      <div className="">
+        <span className="footer_text">Powered by </span>
         <a className="footer_link"  href="https://www.abank.com.mm" target="_blank" rel="noopener noreferrer">
           A bank&copy; 2022 development
         </a>

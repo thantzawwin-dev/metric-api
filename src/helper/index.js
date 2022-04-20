@@ -19,12 +19,27 @@ export const takeServiceNameOutOfKongMetrics = (metrics = []) => {
   return serviceNames
 }
 
+export const filterMetricWithoutService = (metrics = []) => {
+  // console.log("takeServiceMetricOutOfKongMetrics")
+  let services = []
+  metrics && metrics.map(metric => {
+    if(metric.values && metric.values.length > 0)
+      if(metric.values.filter(value => value.hasOwnProperty('metricProperty') && value['metricProperty'] && !value['metricProperty'].hasOwnProperty('service')
+      )[0])
+        services.push(Object.assign({}, metric))
+      else if(metric.values.filter(value => !value.hasOwnProperty('metricProperty'))[0])
+        services.push(Object.assign({}, metric))
+  })
+  return services
+}
+
 export const filterMetricWithService = (metrics = []) => {
   // console.log("takeServiceMetricOutOfKongMetrics")
   let services = []
   metrics && metrics.map(metric => {
     if(metric.values && metric.values.length > 0)
-      if(metric.values.filter(value => value.hasOwnProperty('metricProperty') && value['metricProperty'] && value['metricProperty'].hasOwnProperty('service'))[0])
+      if(metric.values.filter(value => value.hasOwnProperty('metricProperty') && value['metricProperty'] && value['metricProperty'].hasOwnProperty('service')
+      )[0])
         services.push(Object.assign({}, metric))
   })
   return services
@@ -72,8 +87,7 @@ export const createPageRouteByKongService = (array = [], element) => {
   return ste;
 }
 
-export const  setHTTPStatusChartData = (values, labelKey, bgColors = []) => {
-  const bgColor = '#595959';
+export const setHTTPStatusChartData = (values, labelKey, bgColors = [], dataProps) => {
   let data = {};
   let labels = []; 
   let datasetsLabel = "";
@@ -85,7 +99,7 @@ export const  setHTTPStatusChartData = (values, labelKey, bgColors = []) => {
       labels.push(v.metricProperty[labelKey]);
       datasetsLabel = v.metricName;
       datasetsData.push(v.metricValue);
-      datasetsBackground.push(bgColors[index]);
+      datasetsBackground.push(bgColors[v.metricProperty[labelKey][0]] || 0);
     })
     data = {
       labels: labels,
@@ -93,7 +107,8 @@ export const  setHTTPStatusChartData = (values, labelKey, bgColors = []) => {
         {
           label: datasetsLabel,
           data: datasetsData,
-          backgroundColor: datasetsBackground
+          backgroundColor: datasetsBackground,
+          ...dataProps,
         }
       ]
     }
@@ -232,7 +247,19 @@ export const Helper = {
       return num;
   },
   moneyFormat: (num) => {
+    return Helper.thousandSeparator(num);
+  },
+  moneyFormatWithDecimal: (num) => {
     return Helper.thousandSeparator(Helper.decimalTwo(num));
+  },
+  randomColor: () => {
+    let hexString = "0123456789abcdef";
+    let hexCode = "#";
+    for(let i = 0; i < 6; i++){
+      hexCode += hexString[Math.floor(Math.random() * hexString.length)];
+    }
+    return hexCode;
+    //Math.floor(Math.random()*16777215).toString(16)
   },
 	
 	//sorting 

@@ -1,7 +1,24 @@
 .CardBody {
   /* position: relative; */
   font-size: medium;
-  text-align: center;
-  flex: 1 1 auto;
-  padding: 1em;
+  /* text-align: center; */
+  /* flex: 1 1 auto; */
+  padding: 1em 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 20px;
+}
+
+
+@media (max-width: 800px) {
+  .CardBody {
+    flex-direction: column;
+    flex-wrap: unset;
+  }
+}
+
+.CardBody>*{
+  flex: 1;
 }

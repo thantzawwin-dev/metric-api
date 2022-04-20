@@ -1,8 +1,8 @@
 import React from 'react'
 
-const KongHttpStatus = React.lazy(() => import('../../components/molecules/KongHttpStatus'))
-const KongBandwidth = React.lazy(() => import('../../components/molecules/KongBandwidth'))
-const KongLatency = React.lazy(() => import('../../components/molecules/KongLatency'))
+const KongHttpStatus = React.lazy(() => import('../../components/kongComponents/KongHttpStatus'))
+const KongBandwidth = React.lazy(() => import('../../components/kongComponents/KongBandwidth'))
+// const KongLatency = React.lazy(() => import('../../components/kongComponents/KongLatency'))
 
 export default {
   kong_http_status: [ // title
@@ -17,10 +17,10 @@ export default {
       element: KongBandwidth,
     },
   ],
-  kong_latency: [ // title
-    { 
-      metricName: "kong_latency_count", 
-      element: KongLatency,
-    },
-  ]
+  // kong_nginx_http_current_connections: [ // title
+  //   { 
+  //     metricName: "kong_nginx_http_current_connections", 
+  //     element: KongNginxHttpCurrentConnectionItems,
+  //   },
+  // ]
 }

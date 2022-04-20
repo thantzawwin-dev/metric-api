@@ -1,0 +1,14 @@
+.HttpCurrentConnection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  gap: 20px;
+}
+
+.HttpCurrentConnection>* {
+  /* flex: 1; */
+}

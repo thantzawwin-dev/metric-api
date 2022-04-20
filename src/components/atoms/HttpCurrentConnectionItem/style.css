@@ -1,0 +1,21 @@
+.HttpCurrentConnectionItem {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5em 0.2em;
+}
+
+.align_celf_center {
+  align-self: center;
+}
+
+.HttpCurrentConnectionItem > .Connection_Value {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  text-align: right;
+  color: #7047EE;
+}

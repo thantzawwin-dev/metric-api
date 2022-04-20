@@ -1,0 +1,15 @@
+.HttpStatus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-content: space-around; */
+  gap: 20px;
+  padding: 1em;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.HttpStatus>* {
+  /* flex: 1; */
+}
