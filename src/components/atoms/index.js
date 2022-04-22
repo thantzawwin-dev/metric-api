@@ -6,6 +6,7 @@ import CardHeader from './CardHeader';
 import ToggleSwitch from './ToggleSwitch';
 import HttpStatusItem from './HttpStatusItem'
 import HttpCurrentConnectionItem from './HttpCurrentConnectionItem'
+import BackDrop from './BackDrop';
 
 export { Loading }
 export { CustomLink }
@@ -15,3 +16,4 @@ export { CardHeader }
 export { ToggleSwitch }
 export { HttpStatusItem }
 export { HttpCurrentConnectionItem }
+export { BackDrop }

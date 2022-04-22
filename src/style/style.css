@@ -26,6 +26,12 @@ html, body{
   color: #ffffff;
 }
 
+@media (max-width: 800px) {
+  .sub_title {
+    display: none;
+  }
+}
+
 .footer_text {
   font-size: 20px;
   color: #ffffffbe;
@@ -270,7 +276,7 @@ img, svg {
 }
 
 .reload_container > .reloaded_button {
-  display: inline-block;
+  /* display: inline-block; */
   margin-bottom: 0;
   font-weight: 400;
   text-align: center;
@@ -298,4 +304,22 @@ img, svg {
 .test {
   background-color: -webkit-gradient(linear,left top,right top,from(#e2e2e2),to(#555555)); /* For browsers that do not support gradients */
   background-image: linear-gradient(90deg, #afafaf, #67cb02);
+}
+
+.toggle_btn {
+  cursor: pointer;
+  z-index: 100;
+  /* width: 56px;
+  height: 56px; */
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .toggle_btn {
+    display: block;
+  }
+}
+
+.toggle_btn > img {
+  /* object-fit: cover; */
 }

@@ -99,7 +99,10 @@ export const setHTTPStatusChartData = (values, labelKey, bgColors = [], dataProp
       labels.push(v.metricProperty[labelKey]);
       datasetsLabel = v.metricName;
       datasetsData.push(v.metricValue);
-      datasetsBackground.push(bgColors[v.metricProperty[labelKey][0]] || 0);
+      datasetsBackground.push(
+        bgColors[Number(v.metricProperty[labelKey])] || bgColors[v.metricProperty[labelKey][0] + "xx"] 
+        || bgColors["0xx"]
+      );
     })
     data = {
       labels: labels,

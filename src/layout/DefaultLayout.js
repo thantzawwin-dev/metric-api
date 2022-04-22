@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useLocation } from "react-router-dom"
 import * as _ from 'lodash'
+import { BackDrop } from '../components'
 import { getMetricsAsync, selectMetricsStatus, selectMetricsError, selectMetricsUpdatedDateTime } from '../features/metric/metricSlice'
 import AppNav from './AppNav.js'
 import AppHeader from './AppHeader.js'
@@ -28,6 +29,8 @@ const DefaultLayout = () => {
   const [myRoutes, setMyRoutes] = useState([]);
   const [isTransparent, setIsTransparent] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(true);
+  const [reload, setReload] = useState(true);
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
 
   const dispatch = useDispatch()
 
@@ -39,7 +42,7 @@ const DefaultLayout = () => {
     }
   };
   
-  useEffect(() => {
+  useEffect(() => {console.log("HI")
     dispatch(getMetricsAsync())
     .then( ({ payload }) => {
       if(payload) {
@@ -51,11 +54,7 @@ const DefaultLayout = () => {
         )
       }
     })
-    // window.addEventListener("scroll", listenScrollEvent);
-    // return () => {
-    //   window.removeEventListener("scroll", listenScrollEvent);
-    // }
-  }, [isFirstTime])
+  }, [reload])
 
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
@@ -67,14 +66,40 @@ const DefaultLayout = () => {
   if(metricsError && metricsStatus === "idle") {
     return <Navigate to={"/500"} state={{ from: location, error:{...metricsError} }} replace />
   };
-  
+
+  const drawerToggleClickHandler = () => { console.log("drawer toggle")
+    setSideDrawerOpen(!sideDrawerOpen)
+  }
+
+  const backDropClickHandler = () => { console.log("back Drop")
+    // setSideDrawerOpen(false)
+  }
+
+  let backdrop;
+
+  if (sideDrawerOpen) {
+    // sideDrawer = <SideDrawer />;
+    backdrop = <BackDrop 
+      click={backDropClickHandler()} 
+    />;
+  }
+  console.log(sideDrawerOpen)
   return (
+    <>
     <div >
+    {backdrop}
       {/* <AppSidebar /> */}
-      <AppHeader metricsUpdatedDateTime={metricsUpdatedDateTime} handleReload={()=>{
+      <AppHeader metricsUpdatedDateTime={metricsUpdatedDateTime} 
+      isTransparent={isTransparent}
+      handleReload={()=>{
         setIsFirstTime(true)
+        setReload(!reload)
       }} /> 
-      <AppNav routes={myRoutes} isTransparent={isTransparent} 
+      <AppNav 
+        routes={myRoutes} 
+        isTransparent={isTransparent} 
+        drawerToggleClickHandler={() => drawerToggleClickHandler()}
+        sideDrawerOpen={sideDrawerOpen}
       />
       <ContentContainer >
         {
@@ -83,6 +108,7 @@ const DefaultLayout = () => {
       </ContentContainer>
       <AppFooter />
     </div>
+    </>
   )
 }
 

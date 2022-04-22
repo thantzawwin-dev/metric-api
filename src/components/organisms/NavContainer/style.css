@@ -6,10 +6,34 @@
   color: #ffffff;
   z-index: 999;
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
   padding-left: 1.5%;
 }
 
 .Nav_Transparent {
   opacity: 0.8;
+}
+
+@media (max-width: 800px) {
+  .Nav {
+    position: absolute;
+    padding-top: 150px;
+    min-width: 300px;
+    width: 70%;
+    height: 100vh;
+    transform: translateX(-105%);
+    transition: transform 0.3s ease-out;
+    scroll-behavior: auto;
+  }
+
+  .Nav_Transparent {
+    opacity: 1;
+  }
+
+  .Nav_Open {
+    /* z-index: 200; */
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+  }
 }

@@ -18,3 +18,12 @@
   color: #ffffff;
 }
 
+@media (max-width: 800px) {
+  .Header {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { MockText } from '../../assets'
 
 // delay
 function wait(ms, value) {     
@@ -13,3 +14,11 @@ export const fetchMetrics = async () => {
     throw ex;
   }
 };
+
+// export function fetchMetrics(amount = 1) {
+//   wait();
+//   return new Promise((resolve) =>
+//     setTimeout(() => resolve(MockText), 500)
+//   );
+// }
+

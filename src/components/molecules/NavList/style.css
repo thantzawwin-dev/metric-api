@@ -5,3 +5,9 @@
   justify-content: flex-start;
   align-items: baseline;
 }
+
+@media (max-width: 800px) {
+  .NavList {
+    flex-direction: column;
+  }
+}

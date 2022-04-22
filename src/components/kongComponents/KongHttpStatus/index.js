@@ -4,7 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import * as _ from 'lodash'
 import { Card, CardBody, CardHeader, HttpStatus, HttpStatusItem } from '../../../components'
 import { setHTTPStatusChartData } from '../../../helper'
-import { httpStatusCodeBGColor, chartProps } from '../../../assets'
+import { httpStatusCodeData, chartProps } from '../../../assets'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -15,7 +15,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const KongHttpStatus = ({ values, title, description, metricType }) => { 
 
-  let pieDatas = setHTTPStatusChartData(values, 'code', httpStatusCodeBGColor.bgColors, chartProps.datasetsProps);
+  let pieDatas = setHTTPStatusChartData(values, 'code', httpStatusCodeData.bgColors, chartProps.datasetsProps);
 
   return (
     <>

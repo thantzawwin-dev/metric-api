@@ -19,7 +19,7 @@ export default {
           },
           boxWidth: 12,
           boxHeight: 12,
-          padding: 15,
+          padding: 10,
           pointStyle: 'rect',
           usePointStyle: true,
         }

@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { HeaderContainer } from '../components'
 import { getMetricsAsync } from '../features/metric/metricSlice'
-import { ReloadSVG } from '../assets'
+import { ReloadSVG, HamburgerMenuSVG } from '../assets'
 
-const AppHeader = ({ children, metricsUpdatedDateTime, handleReload }) => { 
+const AppHeader = ({ children, metricsUpdatedDateTime, handleReload, drawerToggleClickHandler }) => { 
   const [count, setCount] = useState(0);
   const dispatch = useDispatch()
 
@@ -18,7 +18,7 @@ const AppHeader = ({ children, metricsUpdatedDateTime, handleReload }) => {
   }, [])
 
   useEffect(() => {
-      setCount(0)
+    setCount(0)
   }, [metricsUpdatedDateTime])
 
   const reload = () => handleReload()
@@ -26,6 +26,9 @@ const AppHeader = ({ children, metricsUpdatedDateTime, handleReload }) => {
   return (
     <HeaderContainer>
       <div>
+      <div className="toggle_btn" onClick={() => drawerToggleClickHandler()}>
+        <img src={HamburgerMenuSVG} className="" alt="loading" />
+      </div>
         <Link to='/' className="no_text_decoration">
           <h1 className="title">Kong &nbsp;<span className="sub_title">API Metrics</span></h1>
         </Link>
