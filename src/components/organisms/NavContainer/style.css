@@ -4,7 +4,7 @@
   /* background-color: rgba(255, 255, 255); */
   background-color: #722ACB;
   color: #ffffff;
-  z-index: 999;
+  z-index: 1;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
@@ -17,14 +17,15 @@
 
 @media (max-width: 800px) {
   .Nav {
-    position: absolute;
+    display: none;
+    /* position: absolute;
     padding-top: 150px;
     min-width: 300px;
     width: 70%;
     height: 100vh;
     transform: translateX(-105%);
     transition: transform 0.3s ease-out;
-    scroll-behavior: auto;
+    scroll-behavior: auto; */
   }
 
   .Nav_Transparent {
@@ -32,8 +33,7 @@
   }
 
   .Nav_Open {
-    /* z-index: 200; */
-    transform: translateX(0);
-    transition: transform 0.3s ease-out;
+    /* transform: translateX(0);
+    transition: transform 0.3s ease-out; */
   }
 }

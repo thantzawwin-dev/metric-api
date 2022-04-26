@@ -3,15 +3,15 @@ import * as _ from 'lodash'
 
 // just only for only Kong metrics
 
-export const takeServiceNameOutOfKongMetrics = (metrics = []) => {
-  // console.log("takeServiceNameOutOfKongMetrics")
+export const takeByNameOutOfKongMetricPropertyObj = (metrics = [], byName = "") => {
+  // console.log("takeByNameOutOfKongMetricPropertyObj")
   let serviceNames = []
   metrics && metrics.map(metric => {
     if(metric.values && metric.values.length > 0) {
       metric.values.map((value, index) => {
-        if(value.hasOwnProperty('metricProperty') && value['metricProperty'] && value['metricProperty'].hasOwnProperty('service')) {
-          if(!serviceNames.includes(value['metricProperty']['service'])) 
-            serviceNames.push(value['metricProperty']['service']);
+        if(value.hasOwnProperty('metricProperty') && value['metricProperty'] && value['metricProperty'].hasOwnProperty(byName)) {
+          if(!serviceNames.includes(value['metricProperty'][byName])) 
+            serviceNames.push(value['metricProperty'][byName]);
         }
       })
     }
@@ -33,27 +33,27 @@ export const filterMetricWithoutService = (metrics = []) => {
   return services
 }
 
-export const filterMetricWithService = (metrics = []) => {
+export const filterMetricWithKeyName = (metrics = [], keyName = "") => {
   // console.log("takeServiceMetricOutOfKongMetrics")
   let services = []
   metrics && metrics.map(metric => {
     if(metric.values && metric.values.length > 0)
-      if(metric.values.filter(value => value.hasOwnProperty('metricProperty') && value['metricProperty'] && value['metricProperty'].hasOwnProperty('service')
+      if(metric.values.filter(value => value.hasOwnProperty('metricProperty') && value['metricProperty'] && value['metricProperty'].hasOwnProperty(keyName)
       )[0])
         services.push(Object.assign({}, metric))
   })
   return services
 }
 
-const splicSpecificServiceByServiceName = (metrics = [], name = "") => {
-  // console.log("splicSpecificServiceByServiceName")
+const splicSpecificServiceByKeyName = (metrics = [], name = "", keyName = "") => {
+  // console.log("splicSpecificServiceByKeyName")
   let arrObj = [];
   metrics.map((metric, i) => {
     arrObj[i] = {};
       for (let m in metric) {
         if(m === "values") {
           arrObj[i][m] = metric.values.filter(value => value.hasOwnProperty('metricProperty') && value['metricProperty'] 
-          && value['metricProperty'].hasOwnProperty('service') && value['metricProperty']['service'] === name)
+          && value['metricProperty'].hasOwnProperty(keyName) && value['metricProperty'][keyName] === name)
         } else {
           arrObj[i][m] = metric[m];
         }
@@ -65,14 +65,16 @@ const splicSpecificServiceByServiceName = (metrics = [], name = "") => {
 export const splitSpecificServiceMetric = (metrics = []) => {
   // console.log("splitServiceMetric")
   var services = {}
-  let serviceNames = takeServiceNameOutOfKongMetrics(metrics);
+  let serviceNames = takeByNameOutOfKongMetricPropertyObj(metrics, 'service');
   if(serviceNames && serviceNames.length > 0) {
     serviceNames.map(sName => {
-      services[sName] = splicSpecificServiceByServiceName(metrics, sName)
+      services[sName] = splicSpecificServiceByKeyName(metrics, sName, 'service')
     })
   }
   return services;
 }
+
+
 
 export const createPageRouteByKongService = (array = [], element) => {
   // console.log("createPageRouteByKongService")

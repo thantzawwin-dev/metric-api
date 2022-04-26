@@ -8,8 +8,9 @@ import {
 } from './molecules';
 
 import { 
-  Loading, CustomLink, NavItem, CardBody, CardHeader, ToggleSwitch, HttpStatusItem, HttpCurrentConnectionItem,
-  BackDrop,
+  Loading, CustomLink, NavItem, SideBarItem, CardBody, CardHeader, ToggleSwitch, HttpStatusItem, 
+  HttpCurrentConnectionItem,
+  BackDrop, 
 } from './atoms';
 
 export { HeaderContainer }
@@ -26,6 +27,7 @@ export { HttpCurrentConnection }
 export { Loading }
 export { CustomLink }
 export { NavItem }
+export { SideBarItem }
 export { CardBody }
 export { CardHeader }
 export { ToggleSwitch }

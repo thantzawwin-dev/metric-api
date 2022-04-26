@@ -8,14 +8,15 @@ import AppNav from './AppNav.js'
 import AppHeader from './AppHeader.js'
 import AppContent from './AppContent.js'
 import AppFooter from './AppFooter.js'
+import AppSideBar from './AppSideBar.js'
 import routes from '../routes'
-import { createPageRouteByKongService, takeServiceNameOutOfKongMetrics, kongMetricsResponseConverter } from '../helper';
+import { createPageRouteByKongService, takeByNameOutOfKongMetricPropertyObj, kongMetricsResponseConverter } from '../helper';
 import { Loading, ContentContainer } from '../components'
 
 const KongServiceMetrics = React.lazy(() => import('../views/dashboard/KongServiceMetrics'))
 
 const handlePageRoute = (payload, set) => {
-  let serviceNames = takeServiceNameOutOfKongMetrics(kongMetricsResponseConverter(payload));
+  let serviceNames = takeByNameOutOfKongMetricPropertyObj(kongMetricsResponseConverter(payload), 'service');
   let extraRoute = createPageRouteByKongService(serviceNames, KongServiceMetrics);
     // routes.concat(createPageRouteByKongService(metrics));
   set(extraRoute);
@@ -42,7 +43,7 @@ const DefaultLayout = () => {
     }
   };
   
-  useEffect(() => {console.log("HI")
+  useEffect(() => {
     dispatch(getMetricsAsync())
     .then( ({ payload }) => {
       if(payload) {
@@ -67,12 +68,12 @@ const DefaultLayout = () => {
     return <Navigate to={"/500"} state={{ from: location, error:{...metricsError} }} replace />
   };
 
-  const drawerToggleClickHandler = () => { console.log("drawer toggle")
+  const drawerToggleClickHandler = () => { //console.log("drawer toggle")
     setSideDrawerOpen(!sideDrawerOpen)
   }
 
-  const backDropClickHandler = () => { console.log("back Drop")
-    // setSideDrawerOpen(false)
+  const backDropClickHandler = () => { //console.log("back Drop")
+    setSideDrawerOpen(false)
   }
 
   let backdrop;
@@ -80,26 +81,34 @@ const DefaultLayout = () => {
   if (sideDrawerOpen) {
     // sideDrawer = <SideDrawer />;
     backdrop = <BackDrop 
-      click={backDropClickHandler()} 
+      click={() => backDropClickHandler()} 
     />;
   }
-  console.log(sideDrawerOpen)
+
+  //console.log("sideDrawerOpen >", sideDrawerOpen)
+  
   return (
     <>
     <div >
     {backdrop}
-      {/* <AppSidebar /> */}
-      <AppHeader metricsUpdatedDateTime={metricsUpdatedDateTime} 
-      isTransparent={isTransparent}
-      handleReload={()=>{
-        setIsFirstTime(true)
-        setReload(!reload)
-      }} /> 
+      <AppSideBar 
+        routes={myRoutes} 
+        drawerToggleClickHandler={() => drawerToggleClickHandler()}
+        sideDrawerOpen={sideDrawerOpen}
+      />
+      <AppHeader 
+        metricsUpdatedDateTime={metricsUpdatedDateTime} 
+        isTransparent={isTransparent}
+        handleReload={()=>{
+          setIsFirstTime(true)
+          setReload(!reload)
+          backDropClickHandler()
+        }} 
+        drawerToggleClickHandler={() => drawerToggleClickHandler()}
+      /> 
       <AppNav 
         routes={myRoutes} 
         isTransparent={isTransparent} 
-        drawerToggleClickHandler={() => drawerToggleClickHandler()}
-        sideDrawerOpen={sideDrawerOpen}
       />
       <ContentContainer >
         {

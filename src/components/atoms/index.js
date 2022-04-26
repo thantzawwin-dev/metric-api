@@ -1,6 +1,7 @@
 import Loading from './Loading';
 import CustomLink from './CustomLink';
 import NavItem from './NavItem';
+import SideBarItem from './SideBarItem';
 import CardBody from './CardBody';
 import CardHeader from './CardHeader';
 import ToggleSwitch from './ToggleSwitch';
@@ -11,6 +12,7 @@ import BackDrop from './BackDrop';
 export { Loading }
 export { CustomLink }
 export { NavItem }
+export { SideBarItem }
 export { CardBody }
 export { CardHeader }
 export { ToggleSwitch }

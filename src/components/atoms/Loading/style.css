@@ -6,10 +6,10 @@
 }
 
 .loading-spinner {
-  z-index: 999;
+  z-index: 1;
   position: absolute;
-  left: 47%;
-  top: 47%;
+  left: 48%;
+  top: 48%;
   -ms-transform: translateY(-47%);
   transform: translateY(-47%);
   width: 80px;

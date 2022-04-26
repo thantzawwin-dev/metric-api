@@ -8,14 +8,22 @@ html, body{
   text-decoration: none;
 }
 
+.main_title {
+  position: relative;
+  /* color: #9c27b0; */
+  color: #ffffff;
+  margin-left: 16px; 
+}
+
 .title {
+  vertical-align: middle;
+  line-height: 40px;
   font-size: 24px;
   font-weight: 800;
   margin: 0;
   text-decoration: none;
   /* color: #9c27b0; */
   color: #ffffff;
-  padding-left: 16px; 
 }
 
 .sub_title {
@@ -27,6 +35,21 @@ html, body{
 }
 
 @media (max-width: 800px) {
+  .main_title {
+    margin-left: 10px; 
+  }
+  .sub_title {
+    position: absolute;
+    bottom: -30%;
+    right: -30%;
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+    /* display: none; */
+  }
+}
+
+@media only screen and (max-width: 330px) {
   .sub_title {
     display: none;
   }
@@ -97,6 +120,17 @@ html, body{
   flex-wrap: wrap;
 }
 
+.flex_row {
+  displaY: flex;
+  flex-direction: row;
+  /* align-items: stretch; */
+}
+
+.flex_col {
+  displaY: flex;
+  flex-direction: column;
+}
+
 .flex_box>*{
   /* flex-grow: 1; */
   /* flex: 1; */
@@ -111,7 +145,7 @@ html, body{
   gap: 20px 20px;
   align-items: stretch;
   /* text-align: center; */
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .content_flex_box>*{
@@ -269,10 +303,17 @@ img, svg {
 
 .reload_container {
   font-size: 14px;
+  text-align: right;
 }
 
 .reload_container > .reloaded_time {
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 330px) {
+  .reloaded_time {
+    display: none;
+  }
 }
 
 .reload_container > .reloaded_button {
@@ -287,8 +328,9 @@ img, svg {
   cursor: pointer;
   /* background-image: none; */
   border: 1px solid transparent;
-  padding: 6px 12px;
-  font-size: 14px;
+  padding: 12px 12px;
+  width: 48px;
+  height: 48px;
   line-height: 1.42857143;
   border-radius: 4px;
   -webkit-user-select: none;
@@ -309,6 +351,8 @@ img, svg {
 .toggle_btn {
   cursor: pointer;
   z-index: 100;
+  width: 48px;
+  height: 48px;
   /* width: 56px;
   height: 56px; */
   display: none;
@@ -322,4 +366,87 @@ img, svg {
 
 .toggle_btn > img {
   /* object-fit: cover; */
+  width: inherit;
+  height: inherit;
+}
+
+.display_inline {
+  display: inline;
+}
+
+.sideBar {
+  display: none;
+  box-sizing: border-box;
+  background-color: #722ACB;
+  color: #ffffff;
+  z-index: 1;
+  height: 100%;
+  width: 20%;
+  overflow-x: hidden;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  margin-top: 73px;
+  transform: translateX(-105%);
+  transition: transform 0.3s ease-out;
+  scroll-behavior: auto;
+}
+
+@media only screen and (max-width: 320px) {
+  .sideBar {
+    width: 90%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 360px) {
+  .sideBar {
+    width: 90%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 361px) and (max-width: 480px) {
+  .sideBar {
+    width: 80%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 540px) {
+  .sideBar {
+    width: 70%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 541px) and (max-width: 700px) {
+  .sideBar {
+    width: 60%;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 800px) {
+  .sideBar {
+    width: 50%;
+    display: block;
+  }
+}
+
+.sideBar_Open {
+  left: 0%;
+  transform: translateX(0%);
+  transition: transform 0.3s ease-out;
+}
+
+.route_section {
+  border-bottom: 3px solid lightgray;
+}
+
+.route_name {
+  color: #5315A0;
+  font-size: 18px;
+  font-weight: 600;
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 import './style.css'
 
-const SectionContainer = ({ title, description, metricType, children }) => {
+const SectionContainer = ({ children }) => {
   return (
-    <div className="Section" key={title}>
+    <div className="Section">
       {/* <div className="tooltip metric_title">
         <span className="tooltiptext">{description}</span>
         {title} (type = {metricType})

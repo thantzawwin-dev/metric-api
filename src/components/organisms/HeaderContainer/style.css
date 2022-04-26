@@ -8,12 +8,12 @@
   flex-direction: row;
   /* margin-bottom: 2em; */
   justify-content: space-between;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: baseline;
-  padding: 1em 1em 1em 1.5%;
+  padding: 0.8em 0.8em 0.8em 1.5%;
   /* background-color: rgb(255, 255, 255); */
   background-color: #5315A0;
-  box-shadow: 0px 2px 10px lightgrey;
+  /* box-shadow: 0px 2px 10px lightgrey; */
   /* color: #595959; */
   color: #ffffff;
 }

@@ -9,5 +9,6 @@
 @media (max-width: 800px) {
   .NavList {
     flex-direction: column;
+    width: 100%;
   }
 }

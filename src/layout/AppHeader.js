@@ -25,16 +25,19 @@ const AppHeader = ({ children, metricsUpdatedDateTime, handleReload, drawerToggl
 
   return (
     <HeaderContainer>
-      <div>
-      <div className="toggle_btn" onClick={() => drawerToggleClickHandler()}>
-        <img src={HamburgerMenuSVG} className="" alt="loading" />
-      </div>
-        <Link to='/' className="no_text_decoration">
-          <h1 className="title">Kong &nbsp;<span className="sub_title">API Metrics</span></h1>
-        </Link>
+      <div className="flex_row" style={{ textAlign: 'center' }}>
+        <div className="toggle_btn" onClick={() => drawerToggleClickHandler()}>
+          <img src={HamburgerMenuSVG} className="" alt="loading" />
+        </div>
+        <div className="main_title">
+          <Link to='/' className="no_text_decoration title">
+            <span>Kong &nbsp;</span>
+            <span className="sub_title">API Metrics</span>
+          </Link>
+        </div>
         {/* <span className="ms-1">&copy; 2022</span> */}
       </div>
-      <div className="reload_container">
+      <div className="reload_container" style={{verticalAlign: "center"}}>
         <span className="reloaded_time">update {count} seconds ago</span>
         <span className="reloaded_button" onClick={() => reload()}>
           <img src={ReloadSVG} className="" alt="reload" />
