@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as _ from 'lodash'
 import { getMetricsAsync, selectMetrics, selectMetricsRaw } from '../features/metric/metricSlice'
 import { filterMetricWithKeyName, filterMetricWithoutService, splitSpecificServiceMetric } from '../helper'
+import { SkeletonView } from '../components'
 
 const AppContent = ({ routes }) => {
   const metrics = useSelector(selectMetrics)
@@ -23,7 +24,7 @@ const AppContent = ({ routes }) => {
   const sepecificServiceMetrics = splitSpecificServiceMetric(serviceMetrics);
   // console.log("sepecificServiceMetrics = ", sepecificServiceMetrics)
   return (
-    <Suspense fallback={<div>Loading</div>}>
+    <Suspense fallback={<SkeletonView />}>
       <Routes>
         {routes.map((route, idx) => {
           return (

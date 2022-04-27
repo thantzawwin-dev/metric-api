@@ -9,7 +9,7 @@ import {
 
 import { 
   Loading, CustomLink, NavItem, SideBarItem, CardBody, CardHeader, ToggleSwitch, HttpStatusItem, 
-  HttpCurrentConnectionItem,
+  HttpCurrentConnectionItem, SkeletonView,
   BackDrop, 
 } from './atoms';
 
@@ -34,3 +34,4 @@ export { ToggleSwitch }
 export { HttpStatusItem }
 export { HttpCurrentConnectionItem }
 export { BackDrop }
+export { SkeletonView }

@@ -277,7 +277,8 @@ img, svg {
   font-weight: 800;
   margin: 0;
   text-decoration: none;
-  color: #9c27b0;
+  /* color: #9c27b0; */
+  color: #5315A0;
 }
 
 .error_sub_title {
@@ -289,7 +290,8 @@ img, svg {
 
 .try_again_button {
   border-radius: 15px;
-  background-color: #9c27b0;
+  /* background-color: #9c27b0; */
+  background-color: #5315A0;
   color: #ffffff;
   padding: 10px 30px;
 }

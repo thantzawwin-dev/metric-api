@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { MockText } from '../../assets'
 
+const config = { timeout: 1000 }
+
 // delay
 function wait(ms, value) {     
   return new Promise((resolve) => setTimeout(resolve, ms, value));   

@@ -8,6 +8,7 @@ import ToggleSwitch from './ToggleSwitch';
 import HttpStatusItem from './HttpStatusItem'
 import HttpCurrentConnectionItem from './HttpCurrentConnectionItem'
 import BackDrop from './BackDrop';
+import SkeletonView from './SkeletonView';
 
 export { Loading }
 export { CustomLink }
@@ -19,3 +20,4 @@ export { ToggleSwitch }
 export { HttpStatusItem }
 export { HttpCurrentConnectionItem }
 export { BackDrop }
+export { SkeletonView }
